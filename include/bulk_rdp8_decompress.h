@@ -19,6 +19,10 @@
 #ifndef __BULK_RDP8_COMPRESS_H
 #define __BULK_RDP8_COMPRESS_H
 
+typedef unsigned char byte;
+typedef unsigned short uint16;
+typedef unsigned int uint32;
+
 /* flags for rdp8_compress_create */
 #define NL_RDP8_FLAGS_RDP80 0x04
 
@@ -26,10 +30,6 @@
 #define NL_PACKET_COMPRESSED       0x20
 #define NL_PACKET_COMPR_TYPE_RDP8  0x04
 #define NL_COMPRESSION_TYPE_MASK   0x0F
-
-typedef unsigned char byte;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
 
 /* descriptor values */
 #define SEGMENTED_SINGLE        0xE0

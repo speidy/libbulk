@@ -23,6 +23,28 @@ typedef unsigned char byte;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
 
+/* flags for rdp8_compress_create */
+#define NL_RDP8_FLAGS_RDP80 0x04
+
+/* flags for rdp8 bulk compression */
+#define NL_PACKET_COMPRESSED       0x20
+#define NL_PACKET_COMPR_TYPE_RDP8  0x04
+#define NL_COMPRESSION_TYPE_MASK   0x0F
+
+/* descriptor values */
+#define SEGMENTED_SINGLE        0xE0
+#define SEGMENTED_MULTIPART     0xE1
+
+/* token assignments from the spec, sorted by prefixLength */
+typedef struct _Token
+{
+    int prefixLength;     /* number of bits in the prefix */
+    int prefixCode;       /* bit pattern of this prefix */
+    int valueBits;        /* number of value bits to read */
+    int tokenType;        /* 0=literal, 1=match */
+    uint32 valueBase;     /* added to the value bits */
+} Token;
+
 void *
 rdp8_compress_create(int flags);
 int
