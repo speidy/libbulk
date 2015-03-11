@@ -25,7 +25,7 @@
 /* flags for rdp8_compress_create */
 #define NL_RDP8_FLAGS_RDP80 0x04
 
-/* flags for mppc_compress */
+/* flags for rdp8 bulk compression */
 #define NL_PACKET_COMPRESSED       0x20
 #define NL_PACKET_COMPR_TYPE_RDP8  0x04
 #define NL_COMPRESSION_TYPE_MASK   0x0F
@@ -33,6 +33,28 @@
 struct bulk_rdp8
 {
     int i1;
+};
+
+struct rdp8_bulk_encoded_data
+{
+    byte header;
+    byte *data;
+};
+
+struct rdp_data_segment
+{
+    uint32 size;
+    struct rdp8_bulk_encoded_data *bulk_data;
+};
+
+struct rdp_segmented_data
+{
+    byte descriptor; /* 0xE0 SINGLE */
+                     /* 0xE1 MULTIPART */
+    uint16 segment_count; /* only for MULTIPART */
+    uint32 uncompressed_size; /* only for MULTIPART */
+    struct rdp8_bulk_encoded_data *bulk_data; /* only for SINGLE */
+    struct rdp_data_segment *segment_array; /* only for MULTIPART */
 };
 
 /*****************************************************************************/

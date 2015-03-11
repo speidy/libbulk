@@ -71,7 +71,7 @@ const Token g_tokenTable[] =
 };
 
 /*****************************************************************************/
-struct bulk_rdp8 *
+void *
 rdp8_decompress_create(int flags)
 {
     struct bulk_rdp8 *bulk;

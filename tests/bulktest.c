@@ -52,7 +52,7 @@ int
 rdp8_decompress_test (char *compressed_bytes, int compressed_len)
 {
   char *decompressed_bytes = NULL;
-  struct bulk_rdp8 *decompressor = NULL;
+  void *decompressor = NULL;
   int decomperssed_len = 0;
 
   // use rdp8 decompressor

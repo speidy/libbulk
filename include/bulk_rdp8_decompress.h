@@ -22,7 +22,7 @@
 /* flags for rdp8_compress_create */
 #define NL_RDP8_FLAGS_RDP80 0x04
 
-/* flags for mppc_compress */
+/* flags for rdp8 bulk compression */
 #define NL_PACKET_COMPRESSED       0x20
 #define NL_PACKET_COMPR_TYPE_RDP8  0x04
 #define NL_COMPRESSION_TYPE_MASK   0x0F
@@ -66,7 +66,7 @@ struct bulk_rdp8
     uint32 m_historyIndex;            /* index for next byte out */
 };
 
-struct bulk_rdp8 *
+void *
 rdp8_decompress_create(int flags);
 int
 rdp8_decompress_destroy(void *handle);

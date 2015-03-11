@@ -19,6 +19,10 @@
 #ifndef __BULK_RDP8_COMPRESS_H
 #define __BULK_RDP8_COMPRESS_H
 
+typedef unsigned char byte;
+typedef unsigned short uint16;
+typedef unsigned int uint32;
+
 void *
 rdp8_compress_create(int flags);
 int
